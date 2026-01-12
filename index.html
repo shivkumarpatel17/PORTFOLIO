@@ -4,179 +4,583 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shivkumar Patel | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #1f2937;
+      --accent: #8b5cf6;
+      --light: #f8fafc;
+      --dark: #111827;
+      --gray: #6b7280;
+      --light-gray: #e5e7eb;
+      --shadow: 0 10px 25px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
+    }
+
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      background-color: #f4f6f8;
-      color: #333;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: var(--dark);
+      overflow-x: hidden;
     }
+
+    /* Header & Navigation */
     header {
-      background: linear-gradient(135deg, #1f2937, #111827);
-      color: #fff;
-      padding: 60px 20px;
+      background: linear-gradient(135deg, var(--secondary), var(--dark));
+      color: white;
+      padding: 30px 20px;
       text-align: center;
-      animation: fadeIn 1.2s ease-in;
+      position: relative;
+      overflow: hidden;
     }
-    header h1 {
-      margin-bottom: 10px;
-      font-size: 2.5rem;
-    }
-    section {
+
+    .header-content {
       max-width: 900px;
-      margin: 30px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      animation: slideUp 0.8s ease-in;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
     }
-    h2 {
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      color: #111827;
+
+    .header-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white"/></svg>');
     }
-    .btn {
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      margin: 0 auto 20px;
+      background: linear-gradient(45deg, #2563eb, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      color: white;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       display: inline-block;
-      background: #2563eb;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 25px;
-      font-weight: 600;
-      transition: transform 0.2s ease, background 0.2s ease;
     }
-    .btn:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
+
+    .tagline {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #d1d5db;
     }
-    ul {
-      padding-left: 20px;
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0 30px;
+      flex-wrap: wrap;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #1f2937;
-      color: #fff;
-    }
-    a {
+
+    .contact-links a {
       color: #93c5fd;
       text-decoration: none;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .contact-links a:hover {
+      color: white;
+      transform: translateY(-2px);
     }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+      background: linear-gradient(to right, var(--primary-dark), #7c3aed);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-left: 4px solid var(--primary);
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: var(--dark);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      border-radius: 3px;
+    }
+
+    h3 {
+      color: var(--secondary);
+      margin: 20px 0 10px;
+      font-size: 1.4rem;
+    }
+
+    /* Skills */
+    .skills-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 15px;
+    }
+
+    .skills-list li {
+      background: #f0f9ff;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+
+    /* Projects */
+    .project {
+      background: #f8fafc;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      border: 1px solid var(--light-gray);
+      transition: var(--transition);
+    }
+
+    .project:hover {
+      background: #f0f9ff;
+      transform: translateX(5px);
+    }
+
+    .project h3 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .tech-tag {
+      background: #e0e7ff;
+      color: var(--primary);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Timeline for experience */
+    .timeline-item {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 30px;
+    }
+
+    .timeline-item:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .timeline-item:after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 20px;
+      width: 2px;
+      height: calc(100% + 10px);
+      background: var(--light-gray);
+    }
+
+    .timeline-item:last-child:after {
+      display: none;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 25px 0;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      transition: var(--transition);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    /* Animations */
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .animate {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .animate-left {
+      animation: slideInLeft 0.8s ease forwards;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      section {
+        padding: 25px;
+      }
+      
+      .skills-list {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .profile-img {
+        width: 120px;
+        height: 120px;
+        font-size: 50px;
+      }
+    }
+
+    /* Dark mode toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      z-index: 100;
+      font-size: 1.3rem;
+      color: var(--dark);
     }
   </style>
 </head>
 <body>
 
+  <div class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
   <header>
-    <h1>Shivkumar Patel</h1>
-    <p>Computer Science Graduate | Software & Web Developer</p>
-    <p>
-      <a href="mailto:shivkumar17patel@gmail.com">shivkumar17patel@gmail.com</a> | 
-      <a href="https://www.linkedin.com/in/shivkumar-patel-1902a534a/" target="_blank">LinkedIn</a> | 
-      <a href="https://github.com" target="_blank">GitHub</a>
-    </p>
-    <br />
-    <a class="btn" href="Shivkumar_Patel_Resume.pdf" target="_blank">Download Resume</a>
+    <div class="header-bg"></div>
+    <div class="header-content animate">
+      <div class="profile-img">
+        <i class="fas fa-user"></i>
+      </div>
+      <h1>Shivkumar Patel</h1>
+      <p class="tagline">Computer Science Graduate | Software & Web Developer</p>
+      
+      <div class="contact-links">
+        <a href="mailto:shivkumar17patel@gmail.com">
+          <i class="fas fa-envelope"></i> shivkumar17patel@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/shivkumar-patel-1902a534a/" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/shivkumarpatel17" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </div>
+      
+      <a class="btn" href="Shivkumar_Patel_Resume.pdf" target="_blank">
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+    </div>
   </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I am a Computer Science graduate from the University of Winnipeg with a strong interest in software and web development. 
-      I enjoy building practical applications, learning new technologies, and working in collaborative team environments. 
-      I am currently seeking full-time opportunities where I can apply my technical skills and continue growing as a developer.
-    </p>
-  </section>
+  <main>
+    <section class="animate-left">
+      <h2>About Me</h2>
+      <p>
+        I am a Computer Science graduate from the University of Winnipeg with a strong interest in software and web development. 
+        I enjoy building practical applications, learning new technologies, and working in collaborative team environments. 
+        I am currently seeking full-time opportunities where I can apply my technical skills and continue growing as a developer.
+      </p>
+    </section>
 
-  <section>
-    <h2>Education</h2>
-    <p><strong>Bachelor of Science – Computer Science</strong><br />
-    University of Winnipeg (May 2023 – Present)</p>
-    <p>International Special Entrance Scholarship – May 2023</p>
-  </section>
+    <section class="animate">
+      <h2>Education</h2>
+      <div class="timeline-item">
+        <h3>Bachelor of Science – Computer Science</h3>
+        <p><strong>University of Winnipeg</strong> | May 2023 – Present</p>
+        <p>International Special Entrance Scholarship – May 2023</p>
+      </div>
+    </section>
 
-  <section>
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li><strong>Programming:</strong> Python, Java, JavaScript, Assembly</li>
-      <li><strong>Web:</strong> HTML5, CSS3, React, Node.js, Express.js</li>
-      <li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB</li>
-      <li><strong>Tools:</strong> Git, GitHub, VS Code, IntelliJ, Postman, MS Excel</li>
-      <li><strong>Practices:</strong> REST APIs, JSON, Agile, Debugging</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Projects</h2>
-
-    <div class="project">
-      <h3>Personal Blog Website</h3>
-      <p><em>HTML, CSS, JavaScript, Node.js</em></p>
-      <ul>
-        <li>Built a personal blog website using core Node.js without external frameworks.</li>
-        <li>Implemented routing using the native HTTP module.</li>
-        <li>Created a custom file server using fs and path modules.</li>
-        <li>Designed responsive UI and implemented a custom 404 error page.</li>
+    <section class="animate-left">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li><strong>Programming:</strong> Python, Java, JavaScript, Assembly</li>
+        <li><strong>Web Development:</strong> HTML5, CSS3, React, Node.js, Express.js</li>
+        <li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB</li>
+        <li><strong>Tools & Platforms:</strong> Git, GitHub, VS Code, IntelliJ, Postman, MS Excel</li>
+        <li><strong>Practices & Methodologies:</strong> REST APIs, JSON, Agile, Debugging, OOP</li>
       </ul>
-    </div>
+    </section>
 
-    <div class="project">
-      <h3>Remote Control Application</h3>
-      <p><em>Java, Swing, OOP, Design Patterns</em></p>
+    <section class="animate">
+      <h2>Projects</h2>
+
+      <div class="project">
+        <h3>Personal Blog Website</h3>
+        <div class="tech-tags">
+          <span class="tech-tag">HTML</span>
+          <span class="tech-tag">CSS</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Node.js</span>
+        </div>
+        <ul>
+          <li>Built a personal blog website using core Node.js without external frameworks.</li>
+          <li>Implemented routing using the native HTTP module.</li>
+          <li>Created a custom file server using fs and path modules.</li>
+          <li>Designed responsive UI and implemented a custom 404 error page.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>Remote Control Application</h3>
+        <div class="tech-tags">
+          <span class="tech-tag">Java</span>
+          <span class="tech-tag">Swing</span>
+          <span class="tech-tag">OOP</span>
+          <span class="tech-tag">Design Patterns</span>
+        </div>
+        <ul>
+          <li>Developed a GUI-based remote control system using Java Swing.</li>
+          <li>Implemented Command, Singleton, and Template Method patterns.</li>
+          <li>Added undo/redo functionality and macro commands.</li>
+          <li>Created UML diagrams and logging system using file I/O.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="animate-left">
+      <h2>Work Experience</h2>
+
+      <div class="timeline-item">
+        <h3>Department Manager – Walmart</h3>
+        <p><em>Winnipeg, MB | June 2023 – Present</em></p>
+        <ul>
+          <li>Managed inventory, ordering, receiving, and cycle counts.</li>
+          <li>Ensured compliance with company policies and safety standards.</li>
+          <li>Collaborated with leadership teams to achieve sales targets.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Web Development Intern – Universal Technologies</h3>
+        <p><em>May 2022 – August 2022</em></p>
+        <ul>
+          <li>Developed responsive websites using HTML, CSS, JavaScript, React.</li>
+          <li>Integrated RESTful APIs with Node.js and MySQL.</li>
+          <li>Collaborated in Agile sprints using Git and GitHub.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="animate">
+      <h2>Extracurricular Activities</h2>
       <ul>
-        <li>Developed a GUI-based remote control system using Java Swing.</li>
-        <li>Implemented Command, Singleton, and Template Method patterns.</li>
-        <li>Added undo/redo functionality and macro commands.</li>
-        <li>Created UML diagrams and logging system using file I/O.</li>
+        <li><strong>University of Winnipeg Coding Club:</strong> Active member, participated in coding workshops and hackathons.</li>
+        <li><strong>Competitive Programming:</strong> Regular participant in LeetCode contests and Google Kickstart competitions.</li>
+        <li><strong>Collaborative Projects:</strong> Contributed to full-stack group projects with focus on collaboration and code quality.</li>
       </ul>
-    </div>
-  </section>
-
-  <section>
-    <h2>Work Experience</h2>
-
-    <h3>Department Manager – Walmart</h3>
-    <p><em>Winnipeg, MB | June 2023 – Present</em></p>
-    <ul>
-      <li>Managed inventory, ordering, receiving, and cycle counts.</li>
-      <li>Ensured compliance with company policies and safety standards.</li>
-      <li>Collaborated with leadership teams to achieve sales targets.</li>
-    </ul>
-
-    <h3>Web Development Intern – Universal Technologies</h3>
-    <p><em>May 2022 – Aug 2022</em></p>
-    <ul>
-      <li>Developed responsive websites using HTML, CSS, JavaScript, React.</li>
-      <li>Integrated RESTful APIs with Node.js and MySQL.</li>
-      <li>Collaborated in Agile sprints using Git and GitHub.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Extracurricular Activities</h2>
-    <ul>
-      <li>Active member of the University of Winnipeg Coding Club.</li>
-      <li>Participated in hackathons and coding competitions such as LeetCode and Google Kickstart.</li>
-      <li>Contributed to full-stack group projects with a focus on collaboration and code quality.</li>
-    </ul>
-  </section>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2026 Shivkumar Patel | Portfolio Website</p>
+    <div class="footer-content">
+      <h2 style="color: white; border-bottom: none; padding-bottom: 0; margin-bottom: 20px;">Get In Touch</h2>
+      <p>I'm always open to discussing new opportunities and interesting projects.</p>
+      
+      <div class="social-icons">
+        <a href="mailto:shivkumar17patel@gmail.com">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/shivkumar-patel-1902a534a/" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/shivkumarpatel17" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="Shivkumar_Patel_Resume.pdf" target="_blank">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+      </div>
+      
+      <p>© 2026 Shivkumar Patel | Portfolio Website</p>
+    </div>
   </footer>
 
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const icon = themeToggle.querySelector('i');
+    
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      
+      if (document.body.classList.contains('dark-theme')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        document.body.style.background = '#121212';
+        document.body.style.color = '#e0e0e0';
+        
+        // Update section backgrounds for dark mode
+        document.querySelectorAll('section').forEach(section => {
+          section.style.background = '#1e1e1e';
+          section.style.color = '#e0e0e0';
+        });
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        document.body.style.background = 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
+        document.body.style.color = '#111827';
+        
+        // Revert section backgrounds
+        document.querySelectorAll('section').forEach(section => {
+          section.style.background = 'white';
+          section.style.color = '#111827';
+        });
+      }
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections for animation
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
