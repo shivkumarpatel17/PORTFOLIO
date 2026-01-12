@@ -60,18 +60,41 @@
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white"/></svg>');
     }
 
+    /* Profile Image Styles - UPDATED */
+    .profile-img-container {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+
     .profile-img {
-      width: 150px;
-      height: 150px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       border: 4px solid var(--primary);
-      margin: 0 auto 20px;
+      object-fit: cover;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.4);
+    }
+
+    .profile-img-placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 4px solid var(--primary);
       background: linear-gradient(45deg, #2563eb, #8b5cf6);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 60px;
+      font-size: 70px;
       color: white;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
     h1 {
@@ -342,10 +365,13 @@
         gap: 10px;
       }
       
-      .profile-img {
-        width: 120px;
-        height: 120px;
-        font-size: 50px;
+      .profile-img-container {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .profile-img-placeholder {
+        font-size: 60px;
       }
     }
 
@@ -367,6 +393,25 @@
       font-size: 1.3rem;
       color: var(--dark);
     }
+
+    /* Dark mode styles */
+    .dark-theme {
+      background: #121212;
+      color: #e0e0e0;
+    }
+    
+    .dark-theme section {
+      background: #1e1e1e;
+      color: #e0e0e0;
+    }
+    
+    .dark-theme .project {
+      background: #2d2d2d;
+    }
+    
+    .dark-theme .skills-list li {
+      background: #2d2d2d;
+    }
   </style>
 </head>
 <body>
@@ -378,9 +423,25 @@
   <header>
     <div class="header-bg"></div>
     <div class="header-content animate">
-      <div class="profile-img">
-        <i class="fas fa-user"></i>
+      <div class="profile-img-container">
+        <!-- 
+          REPLACE THE IMAGE SRC WITH YOUR ACTUAL IMAGE:
+          Option 1: If your image is in the same folder as index.html
+          <img src="your-image.jpg" alt="Shivkumar Patel" class="profile-img">
+          
+          Option 2: If your image is in an 'images' folder
+          <img src="images/your-image.jpg" alt="Shivkumar Patel" class="profile-img">
+          
+          Option 3: Use a placeholder if you haven't uploaded yet
+        -->
+        
+        <!-- CURRENTLY USING PLACEHOLDER - REPLACE WITH YOUR IMAGE -->
+        <img src="profile.jpg" alt="Shivkumar Patel" class="profile-img" onerror="this.style.display='none'; document.getElementById('placeholder').style.display='flex';">
+        <div id="placeholder" class="profile-img-placeholder" style="display: none;">
+          <i class="fas fa-user"></i>
+        </div>
       </div>
+      
       <h1>Shivkumar Patel</h1>
       <p class="tagline">Computer Science Graduate | Software & Web Developer</p>
       
@@ -580,6 +641,18 @@
       section.style.transform = 'translateY(20px)';
       section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
       observer.observe(section);
+    });
+    
+    // Check if profile image loads, otherwise show placeholder
+    window.addEventListener('load', function() {
+      const profileImg = document.querySelector('.profile-img');
+      const placeholder = document.getElementById('placeholder');
+      
+      // If image has error attribute or naturalWidth is 0, show placeholder
+      if (profileImg.naturalWidth === 0 || profileImg.complete === false) {
+        profileImg.style.display = 'none';
+        placeholder.style.display = 'flex';
+      }
     });
   </script>
 </body>
